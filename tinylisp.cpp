@@ -4,63 +4,63 @@
 
 // load_script.cpp
 
-#include "tinylisp.h"
 #include <iostream>
-#include <fstream>
 #include <string>
+#include <cstdio>
+#include "tinylisp.h"
 
 using namespace std;
 
-// Suponemos que estas estructuras ya están definidas en tu proyecto
-struct ColorConsole
-{
+struct ColorConsole {
     static constexpr auto fg_blue = "\033[34m";
     static constexpr auto bg_white = "\033[47m";
 };
 
+struct ConsoleBox {
+    void new_text() {/* Simulating new text behavior */}
+    void set_text(const string& text) { cout << text << endl; }
+};
 
+ConsoleBox* consoleBox = new ConsoleBox; // Simulating an initialized console box
 
-ConsoleBox *consoleBox = new ConsoleBox; // Inicialización de consoleBox
+void load_script(const char* filename, bool show_script) {
+    string script;
+    FILE* f = nullptr;
 
-void load_script(const char* filename, bool show_script = false)
-{
-    ifstream file(filename, ios::binary);
-    if (!file)
-    {
-        cerr << "Error: No se pudo abrir el archivo '" << filename << "'." << endl;
-        return;
+    try {
+        f = fopen(filename, "rb");
+        if (!f) {
+            cerr << "Error: Could not open file " << filename << endl;
+            return;
+        }
+
+        char buf[4001];
+        size_t c;
+        while ((c = fread(buf, 1, 4000, f)) > 0) {
+            buf[c] = '\0'; // Null-terminate the buffer
+            script.append(buf);
+        }
+        fclose(f);
+        f = nullptr;
+
+        if (show_script) {
+            cout << ColorConsole::fg_blue << ColorConsole::bg_white;
+            cout << script << endl;
+            cout << "\033[0m"; // Reset console color
+        }
+
+        consoleBox->new_text();
+        consoleBox->set_text(script);
+    } catch (...) {
+        cerr << "Error: An exception occurred while reading the file" << endl;
+        if (f)
+            fclose(f);
     }
-
-    // Leer todo el contenido del archivo en un string
-    string script_content((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
-
-    if (file.fail() && !file.eof())
-    {
-        cerr << "Error: Se produjo un error al leer el archivo." << endl;
-        return;
-    }
-
-    if (show_script)
-    {
-        cout << ColorConsole::fg_blue << ColorConsole::bg_white;
-        cout << script_content << endl;
-    }
-
-    consoleBox->new_text();
-    consoleBox->set_text(script_content);
 }
 
-void load_script()
-{
-    string filename;
-    cout << "Archivo: ";
-    getline(cin, filename);
-
-    if (filename.empty())
-    {
-        cerr << "Error: El nombre del archivo no puede estar vacío." << endl;
-        return;
-    }
-
-    load_script(filename.c_str(), true);
+void load_script() {
+    char filename[500];
+    cout << "Enter the file name: ";
+    cin.getline(filename, 500);
+    load_script(filename, true);
 }
