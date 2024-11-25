@@ -17,11 +17,11 @@ struct ColorConsole {
 };
 
 struct ConsoleBox {
-    void new_text() {/* Simulating new text behavior */}
+    void new_text() {}
     void set_text(const string& text) { cout << text << endl; }
 };
 
-ConsoleBox* consoleBox = new ConsoleBox; // Simulating an initialized console box
+ConsoleBox* consoleBox = new ConsoleBox;
 
 void load_script(const char* filename, bool show_script) {
     string script;
@@ -37,7 +37,7 @@ void load_script(const char* filename, bool show_script) {
         char buf[4001];
         size_t c;
         while ((c = fread(buf, 1, 4000, f)) > 0) {
-            buf[c] = '\0'; // Null-terminate the buffer
+            buf[c] = '\0';
             script.append(buf);
         }
         fclose(f);
@@ -46,7 +46,7 @@ void load_script(const char* filename, bool show_script) {
         if (show_script) {
             cout << ColorConsole::fg_blue << ColorConsole::bg_white;
             cout << script << endl;
-            cout << "\033[0m"; // Reset console color
+            cout << "\033[0m";
         }
 
         consoleBox->new_text();
