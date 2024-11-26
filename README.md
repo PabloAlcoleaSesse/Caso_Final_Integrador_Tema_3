@@ -50,5 +50,15 @@ catch (...)
 ```
 En esta parte si se produce cualquier error durante el **Try**, el **catch** lanza un mensaje de error de que no se puede leer el archivo.
 
+### La utilización de fopen y fread
+Estas funciones son validas pero son mas caracteristicas del lenguaje de programacion C. La función std::ifstream es una alternativa más segura.
+
+### Utilización de "namespace std" 
+La utilización de namespace std es muy práctico pero poco seguro. 
+
+### Nombres poco encendibles 
+Los nombres como "f" o "c" son poco legibles y difíciñes de entender.
+
+
 
 
