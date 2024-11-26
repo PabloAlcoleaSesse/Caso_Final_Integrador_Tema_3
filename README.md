@@ -37,7 +37,7 @@ f = fopen(filename, "rb");
 ```
 En este ejemplo guarda el archivo en la variable f. Si **No** hay **F** el programa lanza un error: "Error de apertura de" + el nombre del archivo introducido.
 
-'''cpp
+``` cpp
 
 catch (...)
     {
@@ -47,7 +47,7 @@ catch (...)
     }
 
 
-'''
+```
 En esta parte si se produce cualquier error durante el **Try**, el **catch** lanza un mensaje de error de que no se puede leer el archivo.
 
 
