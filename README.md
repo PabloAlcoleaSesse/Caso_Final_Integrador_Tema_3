@@ -22,5 +22,7 @@ Se produce un error de lectura durante la lectura del archivo.
 Para manejar estos y otros errores potenciales, es posible que desees agregar comprobaciones de errores adicionales y manejar los fallos de manera más sofisticada.
 
 
-# 3. Valoracion de código de 
+# 3. Valoracion de código de Alejandro Abanades Abanades
+
+
 
