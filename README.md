@@ -35,7 +35,20 @@ f = fopen(filename, "rb");
         }
 
 ```
-En este ejemplo guarda el archivo en la variable f. Si 2No hay 2F el programa lanza un error: "Error de apertura de" + el nombre del archivo introducido.
+En este ejemplo guarda el archivo en la variable f. Si **No** hay **F** el programa lanza un error: "Error de apertura de" + el nombre del archivo introducido.
+
+'''cpp
+
+catch (...)
+    {
+        cerr << "error durante la lectura del archivo" << endl;
+        if(f)
+            fclose(f);
+    }
+
+
+'''
+En esta parte si se produce cualquier error durante el **Try**, el **catch** lanza un mensaje de error de que no se puede leer el archivo.
 
 
 
