@@ -24,10 +24,18 @@ Para manejar estos y otros errores potenciales, es posible que desees agregar co
 
 # 3. Valoracion de código de Alejandro Abanades Abanades
 
-El codigo maneja 
-```cpp
+El codigo maneja bien los errores.
+``` cpp
 
+f = fopen(filename, "rb");
+        if (!f)
+        {
+            cerr << "error de apertura de " << filename << endl;
+            return;
+        }
 
 ```
+En este ejemplo guarda el archivo en la variable f. Si 2No hay 2F el programa lanza un error: "Error de apertura de" + el nombre del archivo introducido.
+
 
 
