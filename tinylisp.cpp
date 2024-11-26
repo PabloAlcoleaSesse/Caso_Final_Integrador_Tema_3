@@ -30,7 +30,7 @@ void load_script(const char* filename, bool show_script) {
     try {
         f = fopen(filename, "rb");
         if (!f) {
-            cerr << "Error: Could not open file " << filename << endl;
+            cerr << "Error: No se ha podido abrir el archivo. " << filename << endl;
             return;
         }
 
@@ -52,7 +52,7 @@ void load_script(const char* filename, bool show_script) {
         consoleBox->new_text();
         consoleBox->set_text(script);
     } catch (...) {
-        cerr << "Error: An exception occurred while reading the file" << endl;
+        cerr << "Error: Ha ocurrido una excepción leyendo este archivo" << endl;
         if (f)
             fclose(f);
     }
@@ -60,7 +60,7 @@ void load_script(const char* filename, bool show_script) {
 
 void load_script() {
     char filename[500];
-    cout << "Enter the file name: ";
+    cout << "Introduce el nombre del archivo: ";
     cin.getline(filename, 500);
     load_script(filename, true);
 }
