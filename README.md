@@ -62,6 +62,18 @@ Aunque usar namespace std es práctico porque evita escribir std:: repetidamente
 ### Nombres poco encendibles 
 Variables como f o c son poco descriptivas y dificultan la comprensión del código.
 
+Posible solución:
+
+``` cpp
+if (!file_stream)
+    {
+        std::cerr << "Error de apertura de " << filename << std::endl;
+        return;
+    }
+
+
+```
+
 
 
 
