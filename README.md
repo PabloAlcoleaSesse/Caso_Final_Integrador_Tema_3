@@ -24,5 +24,10 @@ Para manejar estos y otros errores potenciales, es posible que desees agregar co
 
 # 3. Valoracion de código de Alejandro Abanades Abanades
 
+El codigo maneja 
+```cpp
+
+
+```
 
 
