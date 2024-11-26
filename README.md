@@ -35,7 +35,7 @@ f = fopen(filename, "rb");
         }
 
 ```
-En este ejemplo guarda el archivo en la variable f. Si **No** hay **F** el programa lanza un error: "Error de apertura de" + el nombre del archivo introducido.
+Este bloque de código maneja adecuadamente el caso en el que el archivo no se puede abrir. Si f es nullptr, significa que fopen no pudo abrir el archivo. Esto podría ocurrir porque el archivo no existe, hay problemas de permisos, o el nombre del archivo es incorrecto.
 
 ``` cpp
 
@@ -48,16 +48,19 @@ catch (...)
 
 
 ```
-En esta parte si se produce cualquier error durante el **Try**, el **catch** lanza un mensaje de error de que no se puede leer el archivo.
+Este bloque es útil para capturar errores genéricos en el proceso de lectura. Sin embargo, catch (...) atrapa cualquier tipo de excepción, lo cual puede dificultar el diagnóstico del problema si no se maneja adecuadamente.
 
 ### La utilización de fopen y fread
-Estas funciones son validas pero son mas caracteristicas del lenguaje de programacion C. La función std::ifstream es una alternativa más segura.
-
+Estas funciones son válidas pero son parte del lenguaje C, lo cual puede ser considerado obsoleto en programas modernos de C++.
+	•	Usar std::ifstream de C++ es más seguro porque:
+	•	Es más fácil de usar con std::string y es más idiomático para desarrolladores de C++.
+ 
+ 
 ### Utilización de "namespace std" 
-La utilización de namespace std es muy práctico pero poco seguro. 
+Aunque usar namespace std es práctico porque evita escribir std:: repetidamente, en proyectos grandes puede causar conflictos de nombres.
 
 ### Nombres poco encendibles 
-Los nombres como "f" o "c" son poco legibles y difíciñes de entender.
+Variables como f o c son poco descriptivas y dificultan la comprensión del código.
 
 
 
